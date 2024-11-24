@@ -1,13 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Agregar un método para calcular velocidades
 class HandPerson():
 
     def __init__(self, fps):
         self.x = []
         self.y = []
-        self.velocities = []
+        self.speeds = []
         self.timestamps = []
         self.fps = fps
     
@@ -18,8 +17,8 @@ class HandPerson():
             dx = x - self.x[-2]
             dy = y - self.y[-2]
             distance = np.sqrt(dx**2 + dy**2)
-            velocity = distance * self.fps
-            self.velocities.append(velocity)
+            speed = distance * self.fps
+            self.speeds.append(speed)
             self.timestamps.append(len(self.timestamps) / self.fps)
         else:
             self.timestamps.append(0)
