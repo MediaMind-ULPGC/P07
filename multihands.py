@@ -11,7 +11,7 @@ class MultiHandTracker:
             keypoint_coordinates = keypoint.xy[0]
             right_wrist = keypoint_coordinates[10]
             conf = keypoint.conf[0, 10]
-            if conf > 0.2:
+            if conf > 0.5:
                 x, y = int(right_wrist[0]), int(right_wrist[1])
                 self.add_or_update_hand(x, y)
     
