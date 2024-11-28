@@ -7,8 +7,6 @@ class HandPerson():
         self.x = []
         self.y = []
         self.speeds = []
-        self.timestamps = []
-        self.fps = fps
     
     def add(self, x, y):
         self.x.append(x)
@@ -17,11 +15,7 @@ class HandPerson():
             dx = x - self.x[-2]
             dy = y - self.y[-2]
             distance = np.sqrt(dx**2 + dy**2)
-            speed = distance * self.fps
-            self.speeds.append(speed)
-            self.timestamps.append(len(self.timestamps) / self.fps)
-        else:
-            self.timestamps.append(0)
+            self.speeds.append(distance)
     
     def calculate_distance(self, x, y, threshold=30):
         if len(self.x) > 0 and len(self.y) > 0:
