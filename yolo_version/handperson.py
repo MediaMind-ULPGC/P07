@@ -5,8 +5,11 @@ class HandPerson():
 
     def __init__(self, fps):
         self.x = []
+        self.x_skip = []
         self.y = []
+        self.y_skip = []
         self.speeds = []
+        self.time_frames = []
     
     def add(self, x, y):
         self.x.append(x)
@@ -22,7 +25,18 @@ class HandPerson():
             distance = np.sqrt((x - self.x[-1])**2 + (y - self.y[-1])**2)
             if distance < threshold:
                 self.add(x, y)
+                self.add_skip(x, y)
+                return True
             else:
-                return None
+                return False
         else:
             self.add(x, y)
+            self.add_skip(x, y)
+            return True
+    
+    def add_frame(self, frame):
+        self.time_frames.append(frame)
+    
+    def add_skip(self, x, y):
+        self.x_skip.append(x)
+        self.y_skip.append(y)
